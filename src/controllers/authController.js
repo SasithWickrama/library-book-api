@@ -1,5 +1,7 @@
-import { sign } from 'jsonwebtoken';
-import User from '../models/User';
+import jwt from 'jsonwebtoken'; // Default import
+import User from '../models/User.js';
+
+const { sign } = jwt; // Destructure `sign` after importing
 
 export async function register(req, res) {
   try {

@@ -1,4 +1,6 @@
-import { verify } from 'jsonwebtoken';
+// Solution 1: Recommended default import
+import jwt from 'jsonwebtoken';
+const { verify } = jwt;
 
 export default function(req, res, next) {
   // Get token from header

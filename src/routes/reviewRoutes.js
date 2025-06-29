@@ -1,10 +1,21 @@
-const express = require('express');
+import express from 'express';
+import {
+    addRemark,
+    addReview,
+    getBookReviews
+} from '../controllers/reviewController.js';
+import auth from '../middleware/auth.js';
+import { validateRemark, validateReview } from '../middleware/validators.js';
+
 const router = express.Router();
-const reviewController = require('../controllers/reviewController');
-const authMiddleware = require('../middleware/auth').default;
 
-// Protected routes
-router.post('/', authMiddleware, reviewController.addReview);
-router.get('/:bookId', reviewController.getReviews);
+// POST /api/reviews - Add a new review
+router.post('/', auth, validateReview, addReview);
 
-module.exports = router;
+// GET /api/reviews/:isbn - Get reviews for a book
+router.get('/:isbn', getBookReviews);
+
+// POST /api/reviews/:reviewId/remarks - Add remark to review
+router.post('/:reviewId/remarks', auth, validateRemark, addRemark);
+
+export default router;
