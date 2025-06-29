@@ -1,43 +1,108 @@
-Online Book Review Server-Side Application
-Welcome to the Online Book Review Server-Side Application, the final project for the IBM Course "Developing back-end apps with Node.js and Express." This application allows users to manage books, write reviews, and interact with book-related data. It utilizes MySQL as the database and Sequelize.js as the ORM (Object-Relational Mapping) tool.
+# Book Review API
 
-Quick Brief
-The Online Book Review Server-Side Application provides a RESTful API for managing user accounts, books, and reviews. Users can register, log in, and create reviews for books. Books can be added, updated, and deleted. Reviews can be read, edited, and deleted. The application aims to provide a seamless experience for book enthusiasts to share their thoughts on books.
+A RESTful API for managing books and reviews, built with Express.js and MongoDB.
 
-Getting Started
-Follow these instructions to set up and run the application:
+## Features
 
-Prerequisites
-Node.js: Ensure you have Node.js installed on your system. You can download it from nodejs.org.
+- User authentication (register/login)
+- Book management (CRUD operations)
+- Review system for books
+- Secure routes with JWT authentication
+- MongoDB database
+- CORS enabled for API development
+- Error handling middleware
 
-MySQL: You will need a MySQL database server installed and running. You can download MySQL from mysql.com.
+## Technologies Used
 
-Installation
-Clone the repository:
+- Node.js
+- Express.js
+- MongoDB (with Mongoose ODM)
+- JSON Web Tokens (JWT) for authentication
+- Dotenv for environment variables
+- CORS middleware
 
-git clone <repository-url>
-Navigate to the project folder:
+## Getting Started
 
-cd <project-folder>
-Install dependencies:
+### Prerequisites
 
-npm install
-Configure the database connection:
+- Node.js (v14 or higher)
+- MongoDB (local or Atlas cluster)
+- npm or yarn
 
-Create a MySQL database for the application.
-Set your MySQL database credentials and other environment variables in the .env file.
-Start the application:
+### Installation
 
-npm start
-API Documentation
-For detailed API documentation and examples of how to use the endpoints, please take a look at the API Documentation.
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/yourusername/book-review-api.git
+   cd book-review-api
 
-Features
-User Management: Register, log in, and manage user accounts.
-Book Management: Add, update, delete, and list books.
-Review Management: Write, edit, delete, and read reviews for books.
-Technologies Used
-Node.js: JavaScript runtime environment.
-Express.js: Web application framework for Node.js.
-MySQL: Relational database management system.
-Sequelize.js: Promise-based Node.js ORM for MySQL.
+The server will start on http://localhost:3000
+
+API Endpoints
+Authentication
+POST /api/auth/register - Register a new user
+
+POST /api/auth/login - Login an existing user
+
+Books
+GET /api/books - Get all books
+
+GET /api/books/:id - Get a single book
+
+POST /api/books - Create a new book (protected)
+
+PUT /api/books/:id - Update a book (protected)
+
+DELETE /api/books/:id - Delete a book (protected)
+
+Reviews
+GET /api/reviews - Get all reviews
+
+GET /api/reviews/:id - Get a single review
+
+POST /api/reviews - Create a new review (protected)
+
+PUT /api/reviews/:id - Update a review (protected)
+
+DELETE /api/reviews/:id - Delete a review (protected)
+
+Project Structure
+text
+book-review-api/
+├── routes/
+│   ├── authRoutes.js      # Authentication routes
+│   ├── bookRoutes.js      # Book-related routes
+│   └── reviewRoutes.js    # Review-related routes
+├── models/                # MongoDB models (not shown in code)
+├── .env                   # Environment variables
+├── package.json
+└── app.js              # Main application file
+Environment Variables
+The following environment variables are required:
+
+MONGODB_URI: MongoDB connection string
+
+JWT_SECRET: Secret key for JWT token generation
+
+PORT: Port number for the server (optional, defaults to 3000)
+
+Contributing
+Contributions are welcome! Please follow these steps:
+
+Fork the project
+
+Create your feature branch (git checkout -b feature/AmazingFeature)
+
+Commit your changes (git commit -m 'Add some amazing feature')
+
+Push to the branch (git push origin feature/AmazingFeature)
+
+Open a Pull Request
+
+License
+Distributed under the MIT License. See LICENSE for more information.
+
+Contact
+Your Name - sasith.finland@gmail.com
+
+Project Link: https://github.com/SasithWickrama/library-book-api
