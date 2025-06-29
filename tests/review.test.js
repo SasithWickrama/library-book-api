@@ -4,7 +4,7 @@ const Book = require('../src/models/Book').default;
 const User = require('../src/models/User').default;
 const Review = require('../src/models/Review').default;
 
-describe('Review API', () => {
+describe('Review API', async () => {
   let token;
   let bookId;
 
@@ -37,7 +37,7 @@ describe('Review API', () => {
     bookId = book._id;
   });
 
-  test('POST /api/reviews - should add a review', async () => {
+ 
     const response = await request(app)
       .post('/api/reviews')
       .set('Authorization', `Bearer ${token}`)
@@ -49,5 +49,5 @@ describe('Review API', () => {
     
     expect(response.statusCode).toBe(201);
     expect(response.body).toHaveProperty('rating', 5);
-  });
+
 });

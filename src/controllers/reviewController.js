@@ -132,3 +132,71 @@ export const addRemark = async (req, res) => {
     });
   }
 };
+
+export const updateReview = async (req, res) => {
+  try {
+    const { rating, comment } = req.body;
+    const review = await Review.findByIdAndUpdate(
+      req.params.reviewId,
+      { rating, comment, updatedAt: Date.now() },
+      { new: true, runValidators: true }
+    );
+
+    if (!review) {
+      return res.status(404).json({ message: "Review not found" });
+    }
+
+    res.json({
+      success: true,
+      data: review
+    });
+  } catch (err) {
+    res.status(500).json({ 
+      message: "Update failed",
+      error: err.message 
+    });
+  }
+};
+
+
+// Add this delete function
+export const deleteReview = async (req, res) => {
+  try {
+    const deletedReview = await Review.findOneAndDelete({
+      _id: req.params.reviewId,
+      user: req.user.id // Ensures only owner can delete
+    });
+
+    if (!deletedReview) {
+      return res.status(404).json({
+        success: false,
+        message: "Review not found or unauthorized"
+      });
+    }
+
+    res.json({
+      success: true,
+      message: "Review deleted successfully",
+      data: {
+        id: deletedReview._id,
+        book: deletedReview.book
+      }
+    });
+
+  } catch (err) {
+    res.status(500).json({
+      success: false,
+      message: "Delete failed",
+      error: err.message
+    });
+  }
+};
+
+// Ensure all exports are listed
+export default {
+  addReview,
+  getBookReviews,
+  updateReview,
+  deleteReview, // Must include this
+  addRemark
+};

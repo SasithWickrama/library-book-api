@@ -4,7 +4,7 @@ import express, { json } from 'express';
 import { connect } from 'mongoose';
 import authRoutes from './routes/authRoutes.js';
 import bookRoutes from './routes/bookRoutes.js';
-import reviewRoutes from './routes/reviewRoutes.js'; // Added review routes
+import reviewRoutes from './routes/reviewRoutes.js';
 
 const app = express();
 
@@ -23,7 +23,8 @@ connect(process.env.MONGODB_URI, {
 // Routes
 app.use('/api/books', bookRoutes);
 app.use('/api/auth', authRoutes);
-app.use('/api/reviews', reviewRoutes); // Added this line
+app.use('/api/reviews', reviewRoutes);
+app.use('/api/reviews', reviewRoutes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
@@ -40,5 +41,5 @@ app.use((req, res) => {
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
-  console.log(`API Docs: http://localhost:${PORT}/api-docs`); // If you add docs later
+  console.log(`API Docs: http://localhost:${PORT}/api-docs`); // If add docs later
 });
