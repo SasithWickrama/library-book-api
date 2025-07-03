@@ -1,6 +1,6 @@
 📚 Book API
 
-A RESTful API for managing books, authentication, and reviews, built with **Node.js**, **Express**, and **MongoDB**. Developed as part of a university assignment.
+A RESTful API for managing books, authentication, and reviews, built with **Node.js**, **Express**, and **MongoDB**. Developed as part of a coursera assignment.
 
 ---
 
